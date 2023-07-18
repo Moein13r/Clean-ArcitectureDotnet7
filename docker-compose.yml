@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server" 
+  dot7.architecture.api:
+    image: ${DOCKER_REGISTRY-}dot7architectureapi
+    build:
+      context: .
+      dockerfile: Dot7.Architecture.Api/Dockerfile

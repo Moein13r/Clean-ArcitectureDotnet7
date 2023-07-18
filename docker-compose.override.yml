@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  dot7.architecture.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  db:
+    ports:
+      - "14331:1433"
+    environment:      
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: 'Developer'
+      MSSQL_SA_PASSWORD: "Str0ngPa$$w0rd"
+      MSSQL_AGENT_ENABLED: "1"
+      ConnectionStrings_MssqlConnectionString: "Data Source=db,14331;Initial Catalog=Customer;User Id=sa;Password=Str0ngPa$w0rd;"
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secrets
