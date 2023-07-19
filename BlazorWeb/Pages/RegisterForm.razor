@@ -6,48 +6,46 @@
 @inject ICustomerService customerService
 <PageTitle>Register </PageTitle>
 <h4 class="text-danger">@status</h4>
-<EditForm Model="@customer" OnValidSubmit="@OnSubmit">
+<EditForm class="row form-inline" Model="@customer" OnValidSubmit="@OnSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <div class="row">
-        <div class="col-4">
-            <label For="@(() => customer.FirstName))">
-                FirstName
-            </label>
-            <InputText DisplayName="" @bind-Value="customer.FirstName" />
-        </div>
-        <div class="col-4">
-            <label For="@(() => customer.LastName))">
-                LastName
-            </label>
-            <InputText @bind-Value="customer.LastName" />
-        </div>
-        <div class="col-4">
-            <label For="@(() => customer.PhoneNumber))">
-                PhoneNumber
-            </label>
-            <InputText @bind-Value="customer.PhoneNumber" />
-        </div>
-        <div class="col-4">
-            <label For="@(() => customer.Email))">
-                Email
-            </label>
-            <InputText @bind-Value="customer.Email" />
-        </div>
-        <div class="col-4">
-            <label For="@(() => customer.BankAccountNumber))">
-                BankAccountNumber
-            </label>
-            <InputNumber @bind-Value="customer.BankAccountNumber" />
-        </div>
-        <div class="col-4">
-            <label For="@(() => customer.DateOfBirth))">
-                DateOfBirth
-            </label>
-            <InputText @bind-Value="customer.DateOfBirth" />
-        </div>
+    <div class="col-md-4 form-group mb-4">
+        <label For="@(() => customer.FirstName))">
+            FirstName
+        </label>
+        <InputText class="form-control" DisplayName="" @bind-Value="customer.FirstName" />
     </div>
-    <button type="submit">Submit</button>
+    <div class="col-md-4 form-group mb-4">
+        <label For="@(() => customer.LastName))">
+            LastName
+        </label>
+        <InputText class="form-control" @bind-Value="customer.LastName" />
+    </div>
+    <div class="col-md-4 form-group mb-4">
+        <label For="@(() => customer.PhoneNumber))">
+            PhoneNumber
+        </label>
+        <InputText class="form-control" @bind-Value="customer.PhoneNumber" />
+    </div>
+    <div class="col-md-4 form-outline mb-4">
+        <label For="@(() => customer.Email))">
+            Email
+        </label>
+        <InputText class="form-control" @bind-Value="customer.Email" />
+    </div>
+    <div class="col-md-4 form-outline mb-4">
+        <label For="@(() => customer.BankAccountNumber))">
+            BankAccountNumber
+        </label>
+        <InputNumber class="form-control" @bind-Value="customer.BankAccountNumber" />
+    </div>
+    <div class="col-md-4 form-outline mb-4">
+        <label For="@(() => customer.DateOfBirth))">
+            DateOfBirth
+        </label>
+        <InputText class="form-control" @bind-Value="customer.DateOfBirth" />
+    </div>
+    <button class="form-outline mb-4 btn btn-dark" type="submit">Submit</button>
 </EditForm>
 @code {
     public string status { get { return _status; } set { _status = value; } }
@@ -60,7 +58,7 @@
             int id = await customerService.AddCustomer(customer, default);
             if (id > 0)
             {
-                customer = new Customer();                
+                customer = new Customer();
             }
             else
             {
@@ -69,7 +67,7 @@
         }
         else
         {
-            status = "Sure Email and Phone and banknumber Are Correct Format";
+            status = "Error: enSure Email and Phone and banknumber are in Correct Format";
         }
     }
     Customer customer = new();
