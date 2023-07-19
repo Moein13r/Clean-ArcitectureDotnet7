@@ -7,8 +7,7 @@
 <PageTitle>Register </PageTitle>
 <h4 class="text-danger">@status</h4>
 <EditForm class="row form-inline" Model="@customer" OnValidSubmit="@OnSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <DataAnnotationsValidator />    
     <div class="col-md-4 form-group mb-4">
         <label For="@(() => customer.FirstName))">
             FirstName
@@ -45,7 +44,8 @@
         </label>
         <InputText class="form-control" @bind-Value="customer.DateOfBirth" />
     </div>
-    <button class="form-outline mb-4 btn btn-dark" type="submit">Submit</button>
+    <button class="col-md-4 offset-md-4 form-outline mb-4 btn btn-warning btn-outline-dark" type="submit">Submit</button>
+    <ValidationSummary />
 </EditForm>
 @code {
     public string status { get { return _status; } set { _status = value; } }
