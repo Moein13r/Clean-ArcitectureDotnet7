@@ -1,11 +1,12 @@
-## A Demo On Clean Architecture | MediatR CQRS Pattern | .NET7 Web API
+## A Demo On Clean Architecture | MediatR CQRS Pattern | .NET7 Web API | Blazor App server
 
-## Blog for step by step guidance
-- A Demo On Clean Architecture | MediatR CQRS Pattern | .NET7 Web API(https://www.learmoreseekmore.com/2023/03/demo-on-clean-architecture-mediatr-cqrs-pattern-dotnet7-web-api.html)
+ Can Run With Docker Compose up Command or Run Indepedntly web app or web api swagger ui
+ a Simple Customer crud operation with clean arcitecture and cqrs 
 
-## Stay in touch
-- Author - Naveen Bommidi
-- Website - [Blog](https://learmoreseekmore.com/)
-- Youtube  - [Naveen Bommidi Tech Seeker](https://www.youtube.com/c/NaveenTechSeeker)
-- FaceBook - [FBPage](https://www.facebook.com/naveenTechSeeker)
-- Twitter - [Twitter](https://twitter.com/NaWin512)
+
+
+used entity frame work 
+database an tables will create runtime no need to use migration commands
+just change connection string in docker or app setting in api project and blazor
+
+have good luck!
