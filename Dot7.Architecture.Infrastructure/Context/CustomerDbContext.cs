@@ -14,7 +14,7 @@ public class CustomerDbContext : DbContext, ICustomerDbContext
     {
         modelBuilder.Entity<Customer>().ToTable("Customer");
     }
-    public DbSet<Customer> Customer {get;set;}
+    public virtual DbSet<Customer> Customer {get;set;}
 
     public async Task<int> SaveToDbAsync()
     {

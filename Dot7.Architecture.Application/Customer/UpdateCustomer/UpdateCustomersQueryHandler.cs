@@ -20,11 +20,11 @@ public class UpdateCustomersQueryHandler : IRequestHandler<UpdateCustomersReques
     }
     public async Task<UpdateCustomersResponse> Handle(UpdateCustomersRequest request, CancellationToken cancellationToken)
     {
-        if (!_myWorldDbContext.Customer.Any(c => c.Id == request.Id))
+        if (_myWorldDbContext.Customer.Any(c => c.Id == request.Id))
         {
             var customer = _myWorldDbContext.Customer
             .Update(_myWorldDbContext.Customer.Where(c => c.Id == request.Id).FirstOrDefault());
-            return _mapper.Map<UpdateCustomersResponse>(customer);
+            return _mapper.Map<UpdateCustomersResponse>(customer?.Entity);
         }
         else
             throw new KeyNotFoundException("Id");
