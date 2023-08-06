@@ -17,7 +17,7 @@ namespace Dot7.Tests
 {
     public class UnitTest1
     {
-        private readonly Dot7.Architecture.Infrastructure.Context.CustomerDbContext _mockDbContext;
+        private readonly CustomerDbContext _mockDbContext;
         public UnitTest1()
         {            
             _mockDbContext = Mocks.CustomerDbContext.GetCustomerDbContext().Object;            
