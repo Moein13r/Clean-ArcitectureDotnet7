@@ -2,6 +2,7 @@ using Dot7.Architecture.Application.Customer.CreateCustomer;
 using Dot7.Architecture.Application.Customer.DeleteCustomer;
 using Dot7.Architecture.Application.Customer.GetAllBeaches;
 using Dot7.Architecture.Application.Customer.UpdateCustomer;
+using Dot7.Architecture.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,12 @@ public class CustomerController : ControllerBase
     public async Task<IActionResult> GetAsync()
     {
         var response = await _mediator.Send(new GetAllCustomersRequest());
+        return Ok(response);
+    }
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetCustomersByFilterAsync(GetAllCustomersRequest filterParams)
+    {
+        var response = await _mediator.Send(filterParams);
         return Ok(response);
     }
     [HttpPost("[action]")]

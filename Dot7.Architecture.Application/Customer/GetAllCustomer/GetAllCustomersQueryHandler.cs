@@ -18,7 +18,7 @@ public class GetAllCustomersQueryHandler : IRequestHandler<GetAllCustomersReques
     }
     public Task<List<GetAllCustomersResponse>> Handle(GetAllCustomersRequest request, CancellationToken cancellationToken)
     {
-        return _myWorldDbContext.Customer.ProjectTo<GetAllCustomersResponse>(_mapper.ConfigurationProvider)
-        .ToListAsync();
+        return Task.FromResult(_myWorldDbContext.Customer.ProjectTo<GetAllCustomersResponse>(_mapper.ConfigurationProvider)
+        .Where(request.GetQueryFilterAction()).ToList());
     }
 }
