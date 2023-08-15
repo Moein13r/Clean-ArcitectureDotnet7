@@ -13,9 +13,12 @@ namespace BlazorWeb.Extensions
             try
             {
                 string telephoneNumber = _phoneNumber;
-                string countryCode = "IR";
-                var phoneNumber = phoneUtil.parse(telephoneNumber, countryCode);
-                return phoneUtil.isValidNumber(phoneNumber);
+                //string countryCode = "IR";
+                var phoneNumber = phoneUtil.parse(telephoneNumber, null);
+                string phoneNumberType = phoneUtil.getNumberType(phoneNumber).ToString();
+
+                return !string.IsNullOrEmpty(phoneNumberType) && (phoneNumberType == "MOBILE" || phoneNumberType == "FIXED_LINE_OR_MOBILE");
+                //return phoneUtil.isValidNumber(phoneNumber);
             }
             catch (NumberParseException ex)
             {
